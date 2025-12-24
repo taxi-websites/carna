@@ -91,7 +91,7 @@ export function Footer({ language, className }: FooterProps) {
           {/* CREDIT ROW */}
           <div className="mt-20 flex flex-col items-center justify-center gap-2 px-4 md:mt-24 md:flex-row md:items-center md:justify-between md:gap-1 md:px-0">
             <p className="text-muted-foreground text-center text-base md:text-left">
-              ©{new Date().getFullYear()} {brandName}. {isArabic ? "جميع الحقوق محفوظة" : "All rights reserved"}.
+              ©2025 {brandName}. {isArabic ? "جميع الحقوق محفوظة" : "All rights reserved"}.
             </p>
 
             <div className="text-center text-xs opacity-70 md:text-right">
