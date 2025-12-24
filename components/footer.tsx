@@ -1,23 +1,22 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { Instagram, Mail, NotepadTextDashed,Facebook } from "lucide-react";
-import { LANDING, type Language } from "@/lib/constant";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-
+import Link from "next/link"
+import { Instagram, Mail, Facebook } from "lucide-react"
+import { LANDING, type Language } from "@/lib/constant"
+import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 interface FooterProps {
-  language: Language;
-  className?: string;
+  language: Language
+  className?: string
 }
 
 export function Footer({ language, className }: FooterProps) {
-  const t = LANDING[language];
-  const isArabic = language === "ar";
+  const t = LANDING[language]
+  const isArabic = language === "ar"
 
-  const brandName = t.brand;
-  const brandDescription = t.footer.brandDescription;
+  const brandName = t.brand
+  const brandDescription = t.footer.brandDescription
 
   const socialLinks = [
     {
@@ -35,31 +34,24 @@ export function Footer({ language, className }: FooterProps) {
       href: `mailto:${t.contact.email}`,
       label: t.footer.email,
     },
-  ];
+  ]
 
   const navLinks = [
-    { label: t.footer.terms, href: t.legal.terms },
-    { label: t.footer.privacy, href: t.legal.privacy },
-  ];
+    { label: t.footer.terms, href: `${t.legal.terms}?lang=${language}` },
+    { label: t.footer.privacy, href: `${t.legal.privacy}?lang=${language}` },
+  ]
 
   return (
     <section className={cn("relative mt-0 w-full overflow-hidden", className)}>
-      <footer
-        dir={isArabic ? "rtl" : "ltr"}
-        className="bg-background relative mt-20"
-      >
+      <footer dir={isArabic ? "rtl" : "ltr"} className="bg-background relative mt-20">
         <div className="relative mx-auto flex min-h-[30rem] max-w-7xl flex-col justify-between p-4 py-10 sm:min-h-[35rem] md:min-h-[40rem]">
-
           {/* ========================= */}
           {/* MAIN COLUMN (VERY CLEAN) */}
           {/* ========================= */}
           <div className="mb-12 flex w-full flex-col items-center sm:mb-20 md:mb-0">
             <div className="flex flex-1 flex-col items-center space-y-2">
-
               {/* BRAND NAME — EXTREMELY BOLD */}
-              <span className="text-primary text-4xl sm:text-5xl md:text-6xl font-extrabold">
-                {brandName}
-              </span>
+              <span className="text-primary text-4xl sm:text-5xl md:text-6xl font-extrabold">{brandName}</span>
 
               {/* DESCRIPTION — LIGHTER BUT CLEAN */}
               <p className="text-muted-foreground w-full max-w-sm px-4 text-center sm:w-96 sm:px-0 text-base sm:text-lg font-medium leading-relaxed">
@@ -77,9 +69,7 @@ export function Footer({ language, className }: FooterProps) {
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     target="_blank"
                   >
-                    <div className="h-6 w-6 sm:h-7 sm:w-7 duration-300 hover:scale-110">
-                      {item.icon}
-                    </div>
+                    <div className="h-6 w-6 sm:h-7 sm:w-7 duration-300 hover:scale-110">{item.icon}</div>
                     <span className="sr-only">{item.label}</span>
                   </Link>
                 ))}
@@ -90,11 +80,7 @@ export function Footer({ language, className }: FooterProps) {
             {navLinks.length > 0 && (
               <div className="text-muted-foreground flex max-w-full flex-wrap justify-center gap-6 px-4 text-sm sm:text-base font-medium">
                 {navLinks.map((item, i) => (
-                  <Link
-                    key={i}
-                    href={`${item.href}?lang=${language}`}
-                    className="hover:text-foreground duration-300 hover:font-semibold"
-                  >
+                  <Link key={i} href={item.href} className="hover:text-foreground duration-300 hover:font-semibold">
                     {item.label}
                   </Link>
                 ))}
@@ -105,8 +91,7 @@ export function Footer({ language, className }: FooterProps) {
           {/* CREDIT ROW */}
           <div className="mt-20 flex flex-col items-center justify-center gap-2 px-4 md:mt-24 md:flex-row md:items-center md:justify-between md:gap-1 md:px-0">
             <p className="text-muted-foreground text-center text-base md:text-left">
-              ©{new Date().getFullYear()} {brandName}.{" "}
-              {isArabic ? "جميع الحقوق محفوظة" : "All rights reserved"}.
+              ©{new Date().getFullYear()} {brandName}. {isArabic ? "جميع الحقوق محفوظة" : "All rights reserved"}.
             </p>
 
             <div className="text-center text-xs opacity-70 md:text-right">
@@ -117,19 +102,18 @@ export function Footer({ language, className }: FooterProps) {
           </div>
 
           {/* LOGO BUBBLE */}
-         <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 flex items-center justify-center rounded-3xl border-2 p-3 bg-background/60 border-border backdrop-blur-sm drop-shadow-[0_0px_20px_rgba(0,0,0,0.5)] hover:border-primary transition-colors md:bottom-20 dark:drop-shadow-[0_0px_20px_rgba(255,255,255,0.3)]">
-  <div className="flex h-12 w-12 sm:h-16 sm:w-16 md:h-24 md:w-24 items-center justify-center rounded-2xl   transition-all overflow-hidden">
-    <Image
-      src="/images/GOOGLE-ICON-01.png"
-      alt={`${brandName} logo`}
-      width={96}
-      height={96}
-      className="h-full w-full rounded-3xl object-contain p-1 drop-shadow-lg"
-      priority
-    />
-  </div>
-</div>
-
+          <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-10 flex items-center justify-center rounded-3xl border-2 p-3 bg-background/60 border-border backdrop-blur-sm drop-shadow-[0_0px_20px_rgba(0,0,0,0.5)] hover:border-primary transition-colors md:bottom-20 dark:drop-shadow-[0_0px_20px_rgba(255,255,255,0.3)]">
+            <div className="flex h-12 w-12 sm:h-16 sm:w-16 md:h-24 md:w-24 items-center justify-center rounded-2xl   transition-all overflow-hidden">
+              <Image
+                src="/images/GOOGLE-ICON-01.png"
+                alt={`${brandName} logo`}
+                width={96}
+                height={96}
+                className="h-full w-full rounded-3xl object-contain p-1 drop-shadow-lg"
+                priority
+              />
+            </div>
+          </div>
 
           {/* HUGE BACKGROUND TEXT */}
           <div
@@ -150,5 +134,5 @@ export function Footer({ language, className }: FooterProps) {
         </div>
       </footer>
     </section>
-  );
+  )
 }
