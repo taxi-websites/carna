@@ -474,3 +474,75 @@ export const TERMS_AR = `
 تخضع هذه الشروط للقوانين المحلية المعمول بها.
 يمكن حل النزاعات عن طريق التحكيم حيثما يسمح القانون.
 `;
+
+
+export const SUPPORT: Record<
+  Language,
+  {
+    title: string
+    subtitle: string
+    formTitle: string
+    contactTitle: string
+    nameLabel: string
+    namePlaceholder: string
+    emailLabel: string
+    emailPlaceholder: string
+    subjectLabel: string
+    subjectPlaceholder: string
+    messageLabel: string
+    messagePlaceholder: string
+    submitButton: string
+    submitting: string
+    successMessage: string
+    errorMessage: string
+    emailLabel2: string
+    phoneLabel: string
+    officeHours: string
+    officeHoursTime: string
+  }
+> = {
+  en: {
+    title: "Support Center",
+    subtitle: "We're here to help. Get in touch with our support team.",
+    formTitle: "Send us a message",
+    contactTitle: "Contact Information",
+    nameLabel: "Full Name",
+    namePlaceholder: "Enter your full name",
+    emailLabel: "Email Address",
+    emailPlaceholder: "your@email.com",
+    subjectLabel: "Subject",
+    subjectPlaceholder: "What is this regarding?",
+    messageLabel: "Message",
+    messagePlaceholder: "How can we help you?",
+    submitButton: "Send Message",
+    submitting: "Sending...",
+    successMessage: "Message sent successfully! We'll get back to you soon.",
+    errorMessage: "Failed to send message. Please try again.",
+    emailLabel2: "Email",
+    phoneLabel: "Phone",
+    officeHours: "Office Hours",
+    officeHoursTime: "Sunday - Thursday, 9:00 AM - 6:00 PM",
+  },
+  ar: {
+    title: "مركز الدعم",
+    subtitle: "نحن هنا لمساعدتك. تواصل مع فريق الدعم.",
+    formTitle: "أرسل لنا رسالة",
+    contactTitle: "معلومات التواصل",
+    nameLabel: "الاسم الكامل",
+    namePlaceholder: "أدخل اسمك الكامل",
+    emailLabel: "البريد الإلكتروني",
+    emailPlaceholder: "your@email.com",
+    subjectLabel: "الموضوع",
+    subjectPlaceholder: "ما هو الموضوع؟",
+    messageLabel: "الرسالة",
+    messagePlaceholder: "كيف يمكننا مساعدتك؟",
+    submitButton: "إرسال الرسالة",
+    submitting: "جاري الإرسال...",
+    successMessage: "تم إرسال الرسالة بنجاح! سنتواصل معك قريباً.",
+    errorMessage: "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى.",
+    emailLabel2: "البريد الإلكتروني",
+    phoneLabel: "الهاتف",
+    officeHours: "ساعات العمل",
+    officeHoursTime: "الأحد - الخميس، 9:00 صباحاً - 6:00 مساءً",
+  },
+} as const
