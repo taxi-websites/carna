@@ -68,6 +68,7 @@ export default function Header({ lang }: { lang: "en" | "ar" }) {
 
             <div className={cn("font-bold transition-all duration-300", scrolled ? "text-lg" : "text-xl")}>Carna</div>
           </Link>
+          {/*  */}
 {/*  */}
           {/* NAV (desktop only) */}
           <nav className="hidden sm:flex gap-6 text-sm opacity-80">
