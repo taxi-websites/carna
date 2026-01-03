@@ -1,9 +1,12 @@
 "use server"
 
+<<<<<<< HEAD
 import { Resend } from "resend"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
+=======
+>>>>>>> c0b5e7fbc88c1fcb9406545000be6d80f0a18dc6
 export async function sendSupportEmail(formData: {
   name: string
   email: string
@@ -11,6 +14,7 @@ export async function sendSupportEmail(formData: {
   message: string
 }) {
   try {
+<<<<<<< HEAD
     console.log("[v0] Attempting to send email with data:", formData)
 
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
@@ -130,6 +134,25 @@ export async function sendSupportEmail(formData: {
     return { success: true, data }
   } catch (error) {
     console.log("[v0] Error in sendSupportEmail:", error)
+=======
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/api/send`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+
+    if (!response.ok) {
+      const error = await response.json()
+      throw new Error(error.error || "Failed to send email")
+    }
+
+    const data = await response.json()
+    return { success: true, data }
+  } catch (error) {
+    console.error("Error in sendSupportEmail:", error)
+>>>>>>> c0b5e7fbc88c1fcb9406545000be6d80f0a18dc6
     return {
       success: false,
       error: error instanceof Error ? error.message : "Failed to send email",
