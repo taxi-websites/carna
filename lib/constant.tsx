@@ -545,11 +545,7 @@ export const SUPPORT: Record<
     officeHours: "ساعات العمل",
     officeHoursTime: "الأحد - الخميس، 9:00 صباحاً - 6:00 مساءً",
   },
-<<<<<<< HEAD
 } as const
-
-
-
 
 export const DELETE_ACCOUNT: Record<
   Language,
@@ -631,6 +627,4 @@ export const DELETE_ACCOUNT: Record<
       point3: "بمجرد التأكيد، سيتم حذف حسابك وبياناتك بشكل دائم",
     },
   },
-=======
->>>>>>> c0b5e7fbc88c1fcb9406545000be6d80f0a18dc6
 } as const
