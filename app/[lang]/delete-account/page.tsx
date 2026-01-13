@@ -15,6 +15,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params
   const isArabic = lang === "ar"
+  // 
 
   return {
     title: isArabic ? "حذف الحساب" : "Delete Account",
