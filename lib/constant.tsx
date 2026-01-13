@@ -124,7 +124,7 @@ export const LANDING: Record<Language, LandingLanguageBlock> = {
         title: "Passenger App",
         android:
           "https://play.google.com/store/apps/details?id=carna.passenger",
-        ios: "https://apps.apple.com/app/carna-passenger",
+        ios: "https://apps.apple.com/ae/app/carna/id6755915115",
         gallery: "https://appgallery.huawei.com/#/app/CARNA_PASSENGER",
       },
       driver: {
