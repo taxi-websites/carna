@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { DELETE_ACCOUNT, type Language } from "@/lib/constant"
+// import { sendDeleteAccountRequest } from "@/app/[lang]/delete-account/actions"
 import { toast } from "sonner"
 
 export function DeleteAccountForm({ lang }: { lang: Language }) {
@@ -30,36 +31,7 @@ export function DeleteAccountForm({ lang }: { lang: Language }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setLoading(true)
-
-    try {
-      // Validate phone format
-      if (!phone.startsWith("+962") && !phone.startsWith("+963")) {
-        toast.error(t.phoneError)
-        setLoading(false)
-        return
-      }
-
-      const result = await sendDeleteAccountRequest({
-        phone: phone.trim(),
-        email: email.trim() || undefined,
-        reason: reason.trim(),
-      })
-
-      if (result.success) {
-        toast.success(t.successMessage)
-        // Reset form
-        setPhone("+962 ")
-        setEmail("")
-        setReason("")
-      } else {
-        toast.error(result.error || t.errorMessage)
-      }
-    } catch (error) {
-      toast.error(t.errorMessage)
-    } finally {
-      setLoading(false)
-    }
+  console.log("")
   }
 
   return (
