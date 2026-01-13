@@ -6,7 +6,6 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { sendSupportEmail } from "@/app/[lang]/support/actions"
 import { SUPPORT, type Language } from "@/lib/constant"
 import { CheckCircle2, AlertCircle } from "lucide-react"
 
@@ -21,26 +20,33 @@ export function SupportForm({ lang }: { lang: Language }) {
     message: "",
   })
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setStatus("idle")
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+  setIsSubmitting(true)
+  setStatus("idle")
 
-    try {
-      const result = await sendSupportEmail(formData)
+  try {
+    const res = await fetch(`/${lang}/api/send`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
 
-      if (result.success) {
-        setStatus("success")
-        setFormData({ name: "", email: "", subject: "", message: "" })
-      } else {
-        setStatus("error")
-      }
-    } catch (error) {
+    const data = await res.json()
+
+    if (res.ok) {
+      setStatus("success")
+      setFormData({ name: "", email: "", subject: "", message: "" })
+    } else {
       setStatus("error")
-    } finally {
-      setIsSubmitting(false)
     }
+  } catch {
+    setStatus("error")
+  } finally {
+    setIsSubmitting(false)
   }
+}
+
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">

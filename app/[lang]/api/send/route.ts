@@ -1,35 +1,63 @@
-import { SupportEmailTemplate } from "@/components/email-template"
-import { Resend } from "resend"
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
+import nodemailer from "nodemailer"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const { name, email, subject, message } = body
 
-    // Validate required fields
     if (!name || !email || !subject || !message) {
-      return NextResponse.json({ error: "All fields are required" }, { status: 400 })
+      return NextResponse.json(
+        { error: "All fields are required" },
+        { status: 400 }
+      )
     }
 
-    const { data, error } = await resend.emails.send({
-      from: "Carna Support <onboarding@resend.dev>", // Replace with your verified domain
-      to: ["info@carnaapp.com"],
-      replyTo: email,
-      subject: `Support Request: ${subject}`,
-      react: SupportEmailTemplate({ name, email, subject, message }),
+    const transporter = nodemailer.createTransport({
+      host: process.env.EMAIL_HOST,
+      port: Number(process.env.EMAIL_PORT),
+      secure: true, // 465
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
     })
 
-    if (error) {
-      console.error("[v0] Resend error:", error)
-      return NextResponse.json({ error }, { status: 500 })
-    }
+    const html = `
+      <!DOCTYPE html>
+      <html>
+        <body style="font-family:Arial; line-height:1.6; color:#333;">
+          <h2>New Support Request</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+          <p><strong>Subject:</strong> ${subject}</p>
+          <hr />
+          <p>${message.replace(/\n/g, "<br />")}</p>
+        </body>
+      </html>
+    `
 
-    return NextResponse.json({ success: true, data })
+    await transporter.sendMail({
+      from: `"Carna Support" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_TO,
+      replyTo: email,
+      subject: `Support Request: ${subject}`,
+      html,
+      text: `
+Name: ${name}
+Email: ${email}
+Subject: ${subject}
+
+${message}
+      `,
+    })
+
+    return NextResponse.json({ success: true })
   } catch (error) {
-    console.error("[v0] Error sending email:", error)
-    return NextResponse.json({ error: "Failed to send email" }, { status: 500 })
+    console.error("Support email error:", error)
+    return NextResponse.json(
+      { error: "Failed to send email" },
+      { status: 500 }
+    )
   }
 }

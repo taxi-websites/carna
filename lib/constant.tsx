@@ -113,7 +113,7 @@ export const LANDING: Record<Language, LandingLanguageBlock> = {
 
     contact: {
       email: "info@carnaapp.com",
-      phone: "+963 991 870 618",
+      phone: "+963 989 179 571",
       askUs: "Send us your phone number and our team will contact you shortly.",
       phonePlaceholder: "Enter your phone number",
       sendLabel: "Send",
@@ -179,7 +179,7 @@ export const LANDING: Record<Language, LandingLanguageBlock> = {
 
     contact: {
       email: "info@carnaapp.com",
-      phone: "+963 991 870 618",
+      phone: "+963 989 179 571",
       askUs: "أرسل رقم هاتفك وسنتواصل معك مباشرة.",
       phonePlaceholder: "أدخل رقم هاتفك",
       sendLabel: "إرسال",
@@ -545,7 +545,6 @@ export const SUPPORT: Record<
     officeHours: "ساعات العمل",
     officeHoursTime: "الأحد - الخميس، 9:00 صباحاً - 6:00 مساءً",
   },
-<<<<<<< HEAD
 } as const
 
 
@@ -631,6 +630,4 @@ export const DELETE_ACCOUNT: Record<
       point3: "بمجرد التأكيد، سيتم حذف حسابك وبياناتك بشكل دائم",
     },
   },
-=======
->>>>>>> c0b5e7fbc88c1fcb9406545000be6d80f0a18dc6
 } as const
