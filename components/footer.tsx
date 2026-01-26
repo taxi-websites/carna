@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Instagram, Mail, Facebook } from "lucide-react"
+import { Instagram, Mail, Facebook, MapPin } from "lucide-react"
 import { LANDING, type Language } from "@/lib/constant"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
@@ -75,6 +75,23 @@ export function Footer({ language, className }: FooterProps) {
                 ))}
               </div>
             )}
+            {/* LOCATION */}
+<div className="mt-6 flex max-w-md flex-col items-center gap-2 px-4 text-center">
+  <div className="flex items-center gap-2 text-sm font-semibold text-muted-foreground">
+    <MapPin className="h-4 w-4" />
+    <span>{t.footer.location.label}</span>
+  </div>
+
+  <Link
+    href={t.footer.location.mapUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-sm leading-relaxed text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4"
+  >
+    {t.footer.location.address}
+  </Link>
+</div>
+
 
             {/* NAV LINKS */}
             {navLinks.length > 0 && (

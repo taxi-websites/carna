@@ -79,6 +79,11 @@ export interface LandingLanguageBlock {
     facebook:string;
     terms: string;
     privacy: string;
+    location: {
+    label: string;
+    address: string;
+    mapUrl: string;
+  };
   };
 
   roadmap: {
@@ -151,6 +156,12 @@ export const LANDING: Record<Language, LandingLanguageBlock> = {
     
       terms: "Terms & Conditions",
       privacy: "Privacy Policy",
+      location: {
+    label: "Location",
+    address:
+      "Baghdad Street, Murshid Khater, 20m before Al-Azbakieh Stop, next to Golden Stone Hall",
+    mapUrl: "https://maps.app.goo.gl/smtdjKJYCJhQN2jf9",
+  },
     },
 
     roadmap: {
@@ -217,6 +228,12 @@ export const LANDING: Record<Language, LandingLanguageBlock> = {
     
       terms: "الشروط والأحكام",
       privacy: "سياسة الخصوصية",
+      location: {
+    label: "العنوان",
+    address:
+      "شارع بغداد، مرشد خاطر، قبل موقف الازبكية بـ 20 متر، جنب صالة غولدن ستون",
+    mapUrl: "https://maps.app.goo.gl/smtdjKJYCJhQN2jf9",
+  },
     },
 
     roadmap: {
