@@ -7,11 +7,11 @@ type Platform = "ios" | "android" | "gallery" | "desktop";
 const detectPlatform = (): Platform => {
   if (typeof window === "undefined") return "desktop";
 
-  const ua = navigator.userAgent || navigator.vendor || "";
+  const ua = navigator.userAgent.toLowerCase();
 
-  if (/huawei|honor/i.test(ua)) return "gallery";
-  if (/android/i.test(ua)) return "android";
-  if (/iPad|iPhone|iPod|iOS/i.test(ua)) return "ios";
+  if (/huawei|honor/.test(ua)) return "gallery";
+  if (/android/.test(ua)) return "android";
+  if (/iphone|ipad|ipod|ios/.test(ua)) return "ios";
 
   return "desktop";
 };
@@ -22,22 +22,14 @@ export default function SmartDownloadButton({ lang }: { lang: "en" | "ar" }) {
   const open = () => {
     const platform = detectPlatform();
 
-    switch (platform) {
-      case "ios":
-        window.location.href = links.ios;
-        break;
+    const target =
+      platform === "ios"
+        ? links.ios
+        : platform === "gallery"
+        ? links.gallery
+        : links.android; // android + desktop fallback
 
-      case "android":
-        window.location.href = links.android;
-        break;
-
-      case "gallery":
-        window.location.href = links.gallery;
-        break;
-
-      default:
-        window.location.href = "/download";
-    }
+    window.location.href = target;
   };
 
   return (
