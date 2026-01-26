@@ -2,7 +2,9 @@
 
 import { LANDING } from "@/lib/constant";
 
-const detectPlatform = () => {
+type Platform = "ios" | "android" | "gallery" | "desktop";
+
+const detectPlatform = (): Platform => {
   if (typeof window === "undefined") return "desktop";
 
   const ua = navigator.userAgent || navigator.vendor || "";
@@ -15,20 +17,33 @@ const detectPlatform = () => {
 };
 
 export default function SmartDownloadButton({ lang }: { lang: "en" | "ar" }) {
-  const platform = detectPlatform();
   const links = LANDING[lang].downloads.passenger;
 
   const open = () => {
-    if (platform === "ios") window.location.href = links.ios;
-    else if (platform === "android") window.location.href = links.android;
-    else if (platform === "gallery") window.location.href = links.gallery;
-    else window.location.href = "/download";
+    const platform = detectPlatform();
+
+    switch (platform) {
+      case "ios":
+        window.location.href = links.ios;
+        break;
+
+      case "android":
+        window.location.href = links.android;
+        break;
+
+      case "gallery":
+        window.location.href = links.gallery;
+        break;
+
+      default:
+        window.location.href = "/download";
+    }
   };
 
   return (
     <button
-      className="bg-primary cursor-pointer text-background pointer-coarse  px-5 py-2 rounded-md"
       onClick={open}
+      className="bg-primary text-background px-5 py-2 rounded-md"
     >
       {lang === "ar" ? "تحميل التطبيق" : "Download App"}
     </button>
