@@ -137,7 +137,10 @@ export default async function LangLayout({
 
   return (
     <html lang={lang} dir={isRTL ? "rtl" : "ltr"}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }

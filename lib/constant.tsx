@@ -564,9 +564,6 @@ export const SUPPORT: Record<
   },
 } as const
 
-
-
-
 export const DELETE_ACCOUNT: Record<
   Language,
   {
