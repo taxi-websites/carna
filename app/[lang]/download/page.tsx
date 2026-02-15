@@ -1,22 +1,41 @@
-"use client";
+import { redirect } from "next/navigation"
+import { headers } from "next/headers"
+import { LANDING } from "@/lib/constant"
+import type { Language } from "@/lib/constant"
 
-import { useEffect } from "react";
-import { LANDING } from "@/lib/constant";
+type Platform = "ios" | "android" | "gallery" | "desktop"
 
-export default function DownloadPage({ params }: { params: { lang: "en" | "ar" } }) {
-  useEffect(() => {
-    const ua = navigator.userAgent || navigator.vendor || "";
+function detectPlatform(userAgent: string): Platform {
+  const ua = userAgent.toLowerCase()
 
-    const links = LANDING[params.lang].downloads.passenger;
+  if (/huawei|honor/.test(ua)) return "gallery"
+  if (/android/.test(ua)) return "android"
+  if (/iphone|ipad|ipod|ios/.test(ua)) return "ios"
 
-    if (/huawei|honor/i.test(ua)) window.location.replace(links.gallery);
-    else if (/android/i.test(ua)) window.location.replace(links.android);
-    else if (/iPad|iPhone|iPod|iOS/i.test(ua)) window.location.replace(links.ios);
-  }, [params.lang]);
+  return "desktop"
+}
 
-  return (
-    <div className="flex min-h-screen items-center justify-center text-center">
-      <p>Redirecting to store…</p>
-    </div>
-  );
+export default async function DownloadPage({
+  params,
+}: {
+  params: Promise<{ lang: string }>
+}) {
+  const { lang } = await params
+  const language = lang as Language
+
+  const headersList = await headers()
+  const userAgent = headersList.get("user-agent") ?? ""
+
+  const platform = detectPlatform(userAgent)
+
+  const links = LANDING[language].downloads.passenger
+
+  const target =
+    platform === "ios"
+      ? links.ios
+      : platform === "gallery"
+      ? links.gallery
+      : links.android // android + desktop fallback
+
+  redirect(target)
 }
