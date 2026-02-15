@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"
+
 import { redirect } from "next/navigation"
 import { headers } from "next/headers"
 import { LANDING } from "@/lib/constant"
@@ -27,7 +29,6 @@ export default async function DownloadPage({
   const userAgent = headersList.get("user-agent") ?? ""
 
   const platform = detectPlatform(userAgent)
-
   const links = LANDING[language].downloads.passenger
 
   const target =
@@ -35,7 +36,7 @@ export default async function DownloadPage({
       ? links.ios
       : platform === "gallery"
       ? links.gallery
-      : links.android // android + desktop fallback
+      : links.android
 
   redirect(target)
 }
