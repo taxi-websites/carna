@@ -1,20 +1,41 @@
-export const dynamic = "force-dynamic"
-
-import { redirect } from "next/navigation"
-import { headers } from "next/headers"
-import { LANDING } from "@/lib/constant"
+// app/[lang]/download/page.tsx
+import type { Metadata } from "next"
 import type { Language } from "@/lib/constant"
+import { LANDING } from "@/lib/constant"
+import DownloadRedirect from "@/components/download-redirect"
 
-type Platform = "ios" | "android" | "gallery" | "desktop"
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>
+}): Promise<Metadata> {
+  const { lang } = await params
+  const isArabic = lang === "ar"
 
-function detectPlatform(userAgent: string): Platform {
-  const ua = userAgent.toLowerCase()
-
-  if (/huawei|honor/.test(ua)) return "gallery"
-  if (/android/.test(ua)) return "android"
-  if (/iphone|ipad|ipod|ios/.test(ua)) return "ios"
-
-  return "desktop"
+  return {
+    title: isArabic ? "تحميل التطبيق" : "Download App",
+    description: isArabic
+      ? "حمّل تطبيق كارنا على جهازك وابدأ رحلتك معنا"
+      : "Download Carna app on your device and start your journey with us",
+    alternates: {
+      canonical: `https://carnaapp.com/${lang}/download`,
+      languages: {
+        en: "https://carnaapp.com/en/download",
+        ar: "https://carnaapp.com/ar/download",
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: isArabic ? "ar_SY" : "en_US",
+      alternateLocale: isArabic ? "en_US" : "ar_SY",
+      siteName: "Carna",
+      title: isArabic ? "تحميل تطبيق كارنا" : "Download Carna App",
+      description: isArabic
+        ? "حمّل تطبيق كارنا على جهازك وابدأ رحلتك معنا"
+        : "Download Carna app on your device and start your journey with us",
+      url: `https://carnaapp.com/${lang}/download`,
+    },
+  }
 }
 
 export default async function DownloadPage({
@@ -25,18 +46,5 @@ export default async function DownloadPage({
   const { lang } = await params
   const language = lang as Language
 
-  const headersList = await headers()
-  const userAgent = headersList.get("user-agent") ?? ""
-
-  const platform = detectPlatform(userAgent)
-  const links = LANDING[language].downloads.passenger
-
-  const target =
-    platform === "ios"
-      ? links.ios
-      : platform === "gallery"
-      ? links.gallery
-      : links.android
-
-  redirect(target)
+  return <DownloadRedirect lang={language} />
 }
