@@ -129,13 +129,13 @@ export const LANDING: Record<Language, LandingLanguageBlock> = {
         title: "Passenger App",
         android:
           "https://play.google.com/store/apps/details?id=com.psycho.carna.carna_passenger",
-        ios: "https://apps.apple.com/ae/app/carna/id6755915115",
+        ios: "https://apps.apple.com/us/app/carna/id6755915115",
         gallery: "https://appgallery.huawei.com/#/app/CARNA_PASSENGER",
       },
       driver: {
         title: "Driver App",
         android: "https://play.google.com/store/apps/details?id=com.psycho.carna.carna_driver_app",
-        ios: "https://apps.apple.com/app/carna-driver",
+        ios: "https://apps.apple.com/us/app/carna-driver/id6755929481",
         gallery: "https://appgallery.huawei.com/#/app/CARNA_DRIVER",
       },
     },
