@@ -118,7 +118,7 @@ export const LANDING: Record<Language, LandingLanguageBlock> = {
 
     contact: {
       email: "info@carnaapp.com",
-      phone: "+963 989 179 571",
+      phone: "+963 982 001 221",
       askUs: "Send us your phone number and our team will contact you shortly.",
       phonePlaceholder: "Enter your phone number",
       sendLabel: "Send",
@@ -190,7 +190,7 @@ export const LANDING: Record<Language, LandingLanguageBlock> = {
 
     contact: {
       email: "info@carnaapp.com",
-      phone: "+963 989 179 571",
+      phone: "+963 982 001 221",
       askUs: "أرسل رقم هاتفك وسنتواصل معك مباشرة.",
       phonePlaceholder: "أدخل رقم هاتفك",
       sendLabel: "إرسال",
