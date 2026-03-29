@@ -111,8 +111,8 @@ export const LANDING: Record<Language, LandingLanguageBlock> = {
     region: "Designed for the Middle East market.",
 
     social: {
-      facebook: "https://facebook.com/carna",
-      instagram: "https://instagram.com/carna",
+      facebook: "https://www.facebook.com/profile.php?id=61586289054378",
+      instagram: "https://www.instagram.com/carna_app/",
       linkedin: "https://linkedin.com/company/carna",
     },
 
@@ -183,8 +183,8 @@ export const LANDING: Record<Language, LandingLanguageBlock> = {
     region: "مصممة خصيصاً لأسواق الشرق الأوسط.",
 
     social: {
-      facebook: "https://facebook.com/carna",
-      instagram: "https://instagram.com/carna",
+      facebook: "https://www.facebook.com/profile.php?id=61586289054378",
+      instagram: "https://www.instagram.com/carna_app/",
       linkedin: "https://linkedin.com/company/carna",
     },
 
