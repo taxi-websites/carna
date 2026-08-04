@@ -30,6 +30,8 @@ export function proxy(request: NextRequest) {
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
     pathname.includes("/images/") ||
+    pathname === "/carna-driver" ||
+    pathname === "/carna-passenger" ||
     pathname.includes(".") // Skip files with extensions
   ) {
     return NextResponse.next()

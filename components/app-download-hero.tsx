@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { ButtonsContainer } from "react-mobile-app-button";
 import { AppStoreButton, GooglePlayButton } from "@/components/fixed-mobile-app-button";
+import { Download } from "lucide-react";
 
 import { LANDING, STORE_LABELS, type Language } from "@/lib/constant";
 import { ResponsiveStoreButton } from "./responsive-store-button";
@@ -237,6 +238,30 @@ export default function AppDownloadHero({ lang }: { lang: Language }) {
   theme="light"
 />
 </ButtonsContainer>
+
+<div className="mt-3 flex flex-col justify-between gap-3 sm:flex-row">
+  <motion.a
+    href={t.downloads.passenger.apk}
+    download="Carna-Passenger.apk"
+    whileHover={{ scale: 1.04, y: -2 }}
+    whileTap={{ scale: 0.98 }}
+    className="w-full max-w-full  inline-flex items-center justify-center gap-2 rounded-lg bg-transparent text-primary border-primary px-5 py-3 text-sm font-semibold  shadow-sm transition-opacity hover:opacity-90"
+  >
+    <Download className="size-4" aria-hidden="true" />
+    {t.downloads.passenger.title} — {s.apk}
+  </motion.a>
+
+  <motion.a
+    href={t.downloads.driver.apk}
+    download="Carna-Driver.apk"
+    whileHover={{ scale: 1.04, y: -2 }}
+    whileTap={{ scale: 0.98 }}
+    className="w-full max-w-full  inline-flex items-center justify-center gap-2 rounded-lg bg-transparent text-primary border-primary px-5 py-3 text-sm font-semibold  shadow-sm transition-opacity hover:opacity-90"
+  >
+    <Download className="size-4" aria-hidden="true" />
+    {t.downloads.driver.title} — {s.apk}
+  </motion.a>
+</div>
 
     </div>
   );

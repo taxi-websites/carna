@@ -55,12 +55,14 @@ export interface LandingLanguageBlock {
       android: string;
       ios: string;
       gallery: string;
+      apk: string;
     };
     driver: {
       title: string;
       android: string;
       ios: string;
       gallery: string;
+      apk: string;
     };
   };
 
@@ -131,12 +133,14 @@ export const LANDING: Record<Language, LandingLanguageBlock> = {
           "https://play.google.com/store/apps/details?id=com.psycho.carna.carna_passenger",
         ios: "https://apps.apple.com/us/app/carna/id6755915115",
         gallery: "https://appgallery.huawei.com/#/app/CARNA_PASSENGER",
+        apk: "/carna-passenger",
       },
       driver: {
         title: "Driver App",
         android: "https://play.google.com/store/apps/details?id=com.psycho.carna.carna_driver_app",
         ios: "https://apps.apple.com/us/app/carna-driver/id6755929481",
         gallery: "https://appgallery.huawei.com/#/app/CARNA_DRIVER",
+        apk: "/carna-driver",
       },
     },
 
@@ -203,12 +207,14 @@ export const LANDING: Record<Language, LandingLanguageBlock> = {
           "https://play.google.com/store/apps/details?id=carna.passenger",
         ios: "https://apps.apple.com/app/carna-passenger",
         gallery: "https://appgallery.huawei.com/#/app/CARNA_PASSENGER",
+        apk: "/carna-passenger",
       },
       driver: {
         title: "تطبيق السائق",
         android: "https://play.google.com/store/apps/details?id=carna.driver",
         ios: "https://apps.apple.com/app/carna-driver",
         gallery: "https://appgallery.huawei.com/#/app/CARNA_DRIVER",
+        apk: "/carna-driver",
       },
     },
 
@@ -257,17 +263,20 @@ export const STORE_LABELS: Record<
     apple: string;
     google: string;
     gallery: string;
+    apk: string;
   }
 > = {
   en: {
     apple: "Download on the App Store",
     google: "Get it on Google Play",
     gallery: "Explore it on AppGallery",
+    apk: " APK ",
   },
   ar: {
     apple: "حمّل من App Store",
     google: "حمّل من Google Play",
     gallery: "حمّل من AppGallery",
+    apk: " APK ",
   },
 } as const;
 
