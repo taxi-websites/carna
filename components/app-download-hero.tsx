@@ -247,7 +247,7 @@ export default function AppDownloadHero({ lang }: { lang: Language }) {
     whileTap={{ scale: 0.98 }}
     className="w-full max-w-full  inline-flex items-center justify-center gap-2 rounded-lg bg-transparent text-primary border-primary px-5 py-3 text-sm font-semibold  shadow-sm transition-opacity hover:opacity-90"
   >
-    <Download className="size-4" aria-hidden="true" />
+    {/* <Download className="size-4" aria-hidden="true" /> */}
     {t.downloads.passenger.title} — {s.apk}
   </motion.a>
 
@@ -258,7 +258,7 @@ export default function AppDownloadHero({ lang }: { lang: Language }) {
     whileTap={{ scale: 0.98 }}
     className="w-full max-w-full  inline-flex items-center justify-center gap-2 rounded-lg bg-transparent text-primary border-primary px-5 py-3 text-sm font-semibold  shadow-sm transition-opacity hover:opacity-90"
   >
-    <Download className="size-4" aria-hidden="true" />
+    {/* <Download className="size-4" aria-hidden="true" /> */}
     {t.downloads.driver.title} — {s.apk}
   </motion.a>
 </div>
