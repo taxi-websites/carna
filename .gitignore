@@ -44,3 +44,5 @@ next-env.d.ts
 scripts/export-from-paste.mjs
 
 export-from-paste.mjs
+
+/public/carna-driver

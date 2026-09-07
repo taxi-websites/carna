@@ -140,7 +140,7 @@ export const LANDING: Record<Language, LandingLanguageBlock> = {
         android: "https://play.google.com/store/apps/details?id=com.psycho.carna.carna_driver_app",
         ios: "https://apps.apple.com/us/app/carna-driver/id6755929481",
         gallery: "https://appgallery.huawei.com/#/app/CARNA_DRIVER",
-        apk: "/carna-driver",
+        apk: "/download/driver",
       },
     },
 
@@ -214,7 +214,7 @@ export const LANDING: Record<Language, LandingLanguageBlock> = {
         android: "https://play.google.com/store/apps/details?id=carna.driver",
         ios: "https://apps.apple.com/app/carna-driver",
         gallery: "https://appgallery.huawei.com/#/app/CARNA_DRIVER",
-        apk: "/carna-driver",
+        apk: "/download/driver",
       },
     },
 

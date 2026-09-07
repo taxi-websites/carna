@@ -22,19 +22,6 @@ const nextConfig = {
           },
         ],
       },
-      {
-        source: "/carna-driver",
-        headers: [
-          {
-            key: "Content-Type",
-            value: "application/vnd.android.package-archive",
-          },
-          {
-            key: "Content-Disposition",
-            value: 'attachment; filename="Carna-Driver.apk"',
-          },
-        ],
-      },
     ]
   },
 }
